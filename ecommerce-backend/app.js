@@ -41,6 +41,11 @@ app.use((req, res, next) => {
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
+app.use((req, res)=>{
+  console.log('url: ', req.url)
+  res.sendFile(path.join(__dirname, `../${req.url}`))
+})
+
 app.use(errorController.get404);
 
 Product.belongsTo(User, { constraints: true, onDelete: 'CASCADE' });
@@ -76,7 +81,7 @@ sequelize
     return user.createCart()
   })
   .then(cart=>{
-    app.listen(3000);
+    app.listen(4000);
   }).catch(err=>{
     console.log(err)
   })

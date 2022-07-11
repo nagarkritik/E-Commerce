@@ -163,7 +163,7 @@ exports.getOrders = (req, res, next) => {
   }).catch(err=>{
     console.log(err)
   })
-  //http://localhost:3000/create-orders
+  //http://107.21.158.228:3000/create-orders
   // res.render('shop/orders', {
   //   path: '/orders',
   //   pageTitle: 'Your Orders'

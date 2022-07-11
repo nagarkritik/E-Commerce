@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
 const caritem=document.getElementById('card-item-cont')
 
 function getOrders(){
-    axios.get('http://localhost:3000/orders').then(data=>{
+    axios.get('http://107.21.158.228:4000/orders').then(data=>{
         console.log(data.data)
         const orders=data.data
         var totalprice=0;

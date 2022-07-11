@@ -9,13 +9,13 @@ const purschaseButton = document.querySelector('.btn-purchase')
 purschaseButton.addEventListener('click', purchaseClicked)
 
 window.addEventListener('DOMContentLoaded', ()=>{
-    axios.get('http://localhost:3000/products')
+    axios.get('http://107.21.158.228:4000/products')
     .then(result=>{
         // console.log(result.data.products)
 
         displayProducts(result.data.products)
 
-        axios.get('http://localhost:3000/cart')
+        axios.get('http://107.21.158.228:4000/cart')
         .then(result=>{
             //console.log(result)
             let products = result.data.products
@@ -117,12 +117,12 @@ function purchaseClicked(){
         cartContainer.removeChild(cartContainer.firstChild)
     }
     updateCartTotal()
-    axios.post("http://localhost:3000/orders")
+    axios.post("http://107.21.158.228:4000/orders")
     .then(res=>console.log(res))
     .catch(err=>console.log(err))
     // for(let i=0; i<cartItems.length; i++){
     //     let productId = cartItems[i].id
-    //     axios.post("http://localhost:3000/orders", {productId})
+    //     axios.post("http://107.21.158.228:3000/orders", {productId})
     //     .then(res=>console.log(res))
     //     .catch(err=>console.log(err))
     // }
@@ -139,7 +139,7 @@ function addTocart(e){
     
     console.log(productId, title, imgSrc, price)
 
-    axios.post("http://localhost:3000/cart", {productId})
+    axios.post("http://107.21.158.228:4000/cart", {productId})
     .then((result)=>{
         addItemToCart(productId, title, imgSrc, price)
         popupNotification(message)
@@ -200,7 +200,7 @@ function removeCartItem(e){
     buttonClicked.parentElement.parentElement.remove()
     updateCartTotal()
 
-    axios.post("http://localhost:3000/cart-delete-item", {productId})
+    axios.post("http://107.21.158.228:4000/cart-delete-item", {productId})
     .then(res=>console.log(res))
     .catch(err=>console.log(err))
 }
